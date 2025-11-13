@@ -1,0 +1,38 @@
+# Virtual environments
+.venv/
+venv/
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# Editors/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local config/secrets
+.env
+.env.*
+bot_config.json
+
+.env
+.venv/
+__pycache__/
+bot_config.json
+*.log
+
+

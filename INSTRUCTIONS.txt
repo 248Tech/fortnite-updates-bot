@@ -1,0 +1,99 @@
+Fortnite Updates Discord Bot - Instructions
+==========================================
+
+Overview
+--------
+This bot posts Fortnite news updates to your Discord server using FortniteAPI.io.
+It supports both legacy prefix commands and modern slash commands.
+
+Files
+-----
+- bot.py               - Discord bot setup, commands, and events
+- fortnite_api.py      - Async HTTP client for FortniteAPI.io news
+- embeds.py            - Embed builder for formatting news
+- config_manager.py    - Persistent non-secret configuration storage
+- bot_config.json      - Generated on first run; stores user-editable settings
+- .env                 - Secrets: DISCORD_TOKEN, FORTNITE_API_KEY, NEWS_LANGUAGE
+
+Prerequisites
+-------------
+1) Python 3.10+
+2) Create a Discord bot and get DISCORD_TOKEN
+3) Get a FortniteAPI.io API key (FORTNITE_API_KEY)
+
+Setup
+-----
+1) Create a virtual environment and install dependencies:
+   - Windows PowerShell:
+     Run the quick setup (recommended):
+       .\setup.ps1 -Run
+     Or manual:
+       python -m venv .venv
+       .\.venv\Scripts\Activate.ps1
+   - macOS/Linux:
+     Run the quick setup (recommended):
+       chmod +x setup.sh
+       ./setup.sh --run
+     Or manual:
+       python3 -m venv .venv
+       source .venv/bin/activate
+
+   Install:
+     pip install -r requirements.txt
+
+2) Create a .env file in the project root with:
+     DISCORD_TOKEN=your_discord_bot_token
+     FORTNITE_API_KEY=your_fortniteapi_io_key
+     NEWS_LANGUAGE=en
+
+3) Start the bot:
+     python bot.py
+
+   On first run, a bot_config.json file is created with defaults:
+     {
+       "command_prefix": "!",
+       "language": null,
+       "default_mode": "br",
+       "slash_ephemeral": false
+     }
+   - language=null means use NEWS_LANGUAGE from .env
+   - You can edit bot_config.json while the bot is offline, or use config commands below
+
+Commands
+--------
+News commands:
+  - Legacy: !fortnite_updates [br|stw|cre]
+    Example: !fortnite_updates stw
+    Default mode comes from bot_config.json (default_mode).
+
+  - Slash:  /fortnite_updates type: br|stw|cre
+    Responses can be ephemeral based on config (slash_ephemeral).
+
+Admin configuration commands (Manage Server permission required):
+  Slash group (/config):
+    - /config show
+      Shows current settings (prefix, language, default mode, ephemeral).
+    - /config set_language [lang]
+      Sets language code (en, fr, de, etc). Leave empty to clear and use .env default.
+    - /config set_default_mode [br|stw|cre]
+      Sets the default news mode for commands without an explicit type.
+    - /config set_ephemeral [true|false]
+      Sets whether slash command responses are ephemeral.
+    - /config set_prefix [prefix]
+      Sets the legacy command prefix (e.g., ! or ?).
+
+  Legacy admin commands:
+    - !setprefix ?
+    - !setlang en
+    - !setmode br|stw|cre
+    - !setephemeral true|false
+
+Notes
+-----
+- .env holds secrets; bot_config.json holds non-secret preferences.
+- Changing prefix via commands takes effect immediately.
+- If the bot is in multiple servers, these settings are global (per running instance).
+  For server-specific settings, run separate instances or extend config_manager.py.
+- Errors are logged, and the bot will display a friendly error embed to users if something fails.
+
+
