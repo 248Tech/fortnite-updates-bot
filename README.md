@@ -1,4 +1,28 @@
-## Fortnite Updates Discord Bot (Python 3.10+)
+<div align="center">
+
+<img src="site/assets/icon-192.png" alt="Fortnite Updates Bot logo" width="96" height="96">
+
+# Fortnite Updates Discord Bot
+
+**Fortnite news as clean Discord embeds — slash and prefix commands for Battle Royale, Save the World and Creative.**
+
+[![Live Demo](https://img.shields.io/badge/▶_Live_Demo-no_Discord_needed-5865f2?style=for-the-badge)](https://248tech.github.io/fortnite-updates-bot/demo/)
+
+[![License: MIT](https://img.shields.io/badge/license-MIT-5865f2?style=flat-square)](LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/248Tech/fortnite-updates-bot?style=flat-square&color=5865f2)](https://github.com/248Tech/fortnite-updates-bot/commits/main)
+[![Stars](https://img.shields.io/github/stars/248Tech/fortnite-updates-bot?style=flat-square&color=f59e0b)](https://github.com/248Tech/fortnite-updates-bot/stargazers)
+[![Issues](https://img.shields.io/github/issues/248Tech/fortnite-updates-bot?style=flat-square)](https://github.com/248Tech/fortnite-updates-bot/issues)
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)
+![discord.py](https://img.shields.io/badge/discord.py-5865F2?style=flat-square&logo=discord&logoColor=white)
+![aiohttp](https://img.shields.io/badge/aiohttp-2C5BB4?style=flat-square)
+
+[**Live demo**](https://248tech.github.io/fortnite-updates-bot/demo/) · [Project site](https://248tech.github.io/fortnite-updates-bot/) · [Setup](#quick-setup-windows-powershell) · [Report a bug](https://github.com/248Tech/fortnite-updates-bot/issues)
+
+<img src="site/assets/screenshot.png" alt="Fortnite Updates bot demo screenshot" width="720">
+
+</div>
+
+> **Try it without a Discord server:** the [live demo](https://248tech.github.io/fortnite-updates-bot/demo/) simulates a channel and runs the bot's command logic in your browser, with fictional sample news. Unofficial fan tool, not affiliated with Epic Games or Discord.
 
 A minimal, modular Discord bot that posts Fortnite updates using `discord.py`, `aiohttp`, and `FortniteAPI.io`.
 

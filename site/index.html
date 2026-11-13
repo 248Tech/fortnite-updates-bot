@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fortnite Updates Discord Bot — Slash &amp; Prefix Commands (Live Demo)</title>
+<meta name="description" content="A lightweight, open-source Discord bot that posts Fortnite news as clean embeds: /fortnite_updates and !fortnite_updates for Battle Royale, Save the World and Creative. Python, discord.py and FortniteAPI.io. Try the live demo, no Discord needed.">
+<meta name="keywords" content="Fortnite Discord bot, Fortnite news bot, Fortnite updates, discord.py bot, slash commands, FortniteAPI.io, Python Discord bot, open source">
+<meta name="author" content="Joe Wayne / 248Tech LLC">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://248tech.github.io/fortnite-updates-bot/">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1e1f22">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fortnite Updates Bot">
+<meta property="og:title" content="Fortnite Updates Discord Bot">
+<meta property="og:description" content="Fortnite news as clean Discord embeds. Slash and prefix commands. Try it in a simulated channel.">
+<meta property="og:url" content="https://248tech.github.io/fortnite-updates-bot/">
+<meta property="og:image" content="https://248tech.github.io/fortnite-updates-bot/assets/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fortnite Updates Discord Bot">
+<meta name="twitter:description" content="Open-source Python bot. Try the live demo.">
+<meta name="twitter:image" content="https://248tech.github.io/fortnite-updates-bot/assets/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Fortnite Updates Discord Bot","applicationCategory":"CommunicationApplication","operatingSystem":"Windows, macOS, Linux","description":"Open-source Discord bot that posts Fortnite news embeds using FortniteAPI.io, with slash and prefix commands.","url":"https://248tech.github.io/fortnite-updates-bot/","codeRepository":"https://github.com/248Tech/fortnite-updates-bot","programmingLanguage":"Python","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"248Tech LLC","url":"https://github.com/248Tech"}}
+</script>
+<style>
+:root{--bg:#1e1f22;--panel:#2b2d31;--panel2:#313338;--line:#3f4147;--text:#e3e5e8;--muted:#a0a6af;--blurple:#5865f2;--blurple-h:#4752c4}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 "Segoe UI",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#7f8aff;text-decoration:none}a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid #00a8fc;outline-offset:3px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;color:#000;padding:8px;z-index:99}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.top{position:sticky;top:0;z-index:20;background:rgba(30,31,34,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:20px;height:60px}
+.logo{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:700}.logo img{width:30px;height:30px;border-radius:8px}
+nav.links{margin-left:auto;display:flex;gap:18px;font-size:.9rem}nav.links a{color:var(--muted)}nav.links a:hover{color:var(--text);text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:.75rem 1.3rem;border-radius:8px;font-weight:600;border:1px solid var(--line);background:var(--panel);color:var(--text)}.btn:hover{text-decoration:none;border-color:var(--blurple)}
+.btn.primary{background:var(--blurple);border-color:var(--blurple);color:#fff;box-shadow:0 10px 30px rgba(88,101,242,.35)}.btn.primary:hover{background:var(--blurple-h)}
+.hero{padding:72px 0 56px;background:radial-gradient(900px 420px at 80% -10%,rgba(88,101,242,.3),transparent)}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
+.eyebrow{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#aab0ff;border:1px solid rgba(88,101,242,.5);padding:.25rem .7rem;border-radius:99px}
+h1{font-size:clamp(2.1rem,5vw,3.2rem);line-height:1.1;margin:.9rem 0 1rem;letter-spacing:-.02em}h1 span{color:#8a94ff}
+.lead{font-size:1.1rem;color:var(--muted);max-width:54ch;margin:0 0 1.5rem}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.badges{display:flex;gap:6px;flex-wrap:wrap}.badges img{height:20px}
+.shot img{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.55)}
+section{padding:64px 0}h2{font-size:clamp(1.5rem,3vw,2rem);margin:0 0 .5rem}.sub{color:var(--muted);margin:0 0 32px;max-width:70ch}
+.alt{background:var(--panel);border-block:1px solid var(--line)}
+.grid{display:grid;gap:16px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:20px}.alt .card{background:var(--bg)}.card h3{margin:.2rem 0 .4rem;font-size:1.02rem}.card p{margin:0;color:var(--muted);font-size:.93rem}
+.ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:rgba(88,101,242,.2);font-size:1.15rem;margin-bottom:6px}
+table{width:100%;border-collapse:collapse;background:var(--panel2);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:.9rem}th,td{padding:.65rem .9rem;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}tr:last-child td{border-bottom:0}
+code,pre{font-family:ui-monospace,Consolas,monospace;font-size:.88em}pre{background:#111214;border:1px solid var(--line);border-radius:10px;padding:14px;overflow:auto;margin:10px 0 0;color:#c9cdfb}
+.steps{counter-reset:s;display:grid;gap:12px;padding:0;list-style:none}.steps li{counter-increment:s;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px 16px 14px 56px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:16px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--blurple);display:grid;place-items:center;font-weight:700;font-size:.85rem}
+.note{font-size:.82rem;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:.86rem}footer .wrap{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}.g3{grid-template-columns:1fr 1fr}nav.links{display:none}}
+@media(max-width:560px){.g3,.g2{grid-template-columns:1fr}.hero{padding-top:40px}section{padding:44px 0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap"><a class="logo" href="./"><img src="assets/favicon.png" alt="" width="30" height="30">Fortnite Updates Bot</a>
+<nav class="links" aria-label="Sections"><a href="#features">Features</a><a href="#commands">Commands</a><a href="#architecture">Architecture</a><a href="#run">Run it</a><a href="https://github.com/248Tech/fortnite-updates-bot">GitHub</a></nav>
+<a class="btn primary" href="demo/" style="padding:.45rem .9rem;font-size:.85rem">Live demo</a></div></header>
+<main id="main">
+<section class="hero"><div class="wrap">
+  <div>
+    <span class="eyebrow">Open source · Python 3.10+</span>
+    <h1>Fortnite news, <span>delivered to your Discord.</span></h1>
+    <p class="lead">A small, modular Discord bot that fetches Fortnite news from FortniteAPI.io and posts it as tidy embeds. Slash commands and legacy prefix commands for Battle Royale, Save the World and Creative.</p>
+    <div class="cta"><a class="btn primary" href="demo/">▶ Try it in a simulated channel</a><a class="btn" href="https://github.com/248Tech/fortnite-updates-bot">★ View on GitHub</a></div>
+    <div class="badges" aria-label="Project badges">
+      <img alt="Last commit" src="https://img.shields.io/github/last-commit/248Tech/fortnite-updates-bot?style=flat-square&color=5865f2">
+      <img alt="Stars" src="https://img.shields.io/github/stars/248Tech/fortnite-updates-bot?style=flat-square&color=f59e0b">
+      <img alt="Python 3.10+" src="https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white">
+      <img alt="discord.py" src="https://img.shields.io/badge/discord.py-5865F2?style=flat-square&logo=discord&logoColor=white">
+      <img alt="aiohttp" src="https://img.shields.io/badge/aiohttp-2C5BB4?style=flat-square">
+      <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-5865f2?style=flat-square">
+    </div>
+    <p class="note" style="margin-top:14px">No Discord login needed — the demo runs the bot’s command logic in your browser with fictional sample news.</p>
+  </div>
+  <div class="shot"><img src="assets/screenshot.png" alt="Fortnite Updates bot demo: a Discord-style channel showing a news embed, config JSON and request pipeline" width="1440" height="900" fetchpriority="high"></div>
+</div></section>
+
+<section id="features" class="alt"><div class="wrap">
+  <h2>What it does</h2><p class="sub">Focused on doing one job well, with the plumbing a real bot needs.</p>
+  <div class="grid g3">
+    <div class="card"><div class="ic">📰</div><h3>Clean news embeds</h3><p>Numbered fields, category tags and a hero image, trimmed to stay inside Discord’s 25-field and 6000-character limits.</p></div>
+    <div class="card"><div class="ic">⌨️</div><h3>Slash &amp; prefix commands</h3><p><code>/fortnite_updates</code> with a type picker, plus legacy <code>!fortnite_updates [br|stw|cre]</code> — with an editable prefix.</p></div>
+    <div class="card"><div class="ic">⚙️</div><h3>Runtime configuration</h3><p>Admins change language, default mode, prefix and ephemeral replies from Discord. Settings persist to <code>bot_config.json</code>.</p></div>
+    <div class="card"><div class="ic">🛡️</div><h3>Resilient networking</h3><p>Async <code>aiohttp</code> with a 10 s timeout and friendly error embeds for HTTP, timeout and parse failures.</p></div>
+    <div class="card"><div class="ic">🌍</div><h3>Language aware</h3><p>Set a default language in <code>.env</code> or per server with <code>/config set_language</code>.</p></div>
+    <div class="card"><div class="ic">🧩</div><h3>Modular code</h3><p>API client, embed builder, config store and command handlers live in separate small files that are easy to extend.</p></div>
+  </div>
+  <p style="margin-top:28px"><a class="btn primary" href="demo/">Run the commands yourself →</a></p>
+</div></section>
+
+<section id="commands"><div class="wrap">
+  <h2>Commands</h2><p class="sub">Everything below works in the demo, including the permission checks.</p>
+  <table><thead><tr><th>Command</th><th>Who</th><th>What it does</th></tr></thead><tbody>
+    <tr><td><code>/fortnite_updates [type]</code><br><code>!fortnite_updates [br|stw|cre]</code></td><td>Everyone</td><td>Post the latest news for Battle Royale, Save the World or Creative.</td></tr>
+    <tr><td><code>/config show</code></td><td>Manage Server</td><td>Show prefix, language, default mode and ephemeral setting.</td></tr>
+    <tr><td><code>/config set_language</code> · <code>!setlang</code></td><td>Manage Server</td><td>Set the news language (empty = <code>.env</code> default).</td></tr>
+    <tr><td><code>/config set_default_mode</code> · <code>!setmode</code></td><td>Manage Server</td><td>Store the preferred news mode.</td></tr>
+    <tr><td><code>/config set_ephemeral</code> · <code>!setephemeral</code></td><td>Manage Server</td><td>Make slash replies visible only to the caller.</td></tr>
+    <tr><td><code>/config set_prefix</code> · <code>!setprefix</code></td><td>Manage Server</td><td>Change the legacy command prefix.</td></tr>
+  </tbody></table>
+</div></section>
+
+<section id="architecture" class="alt"><div class="wrap">
+  <h2>Architecture</h2><p class="sub">Four small modules, one responsibility each.</p>
+  <div class="grid g2">
+    <div class="card"><h3>bot.py</h3><p>discord.py command tree and prefix commands; shared handler for both command styles.</p></div>
+    <div class="card"><h3>fortnite_api.py</h3><p>Async FortniteAPI.io client that normalizes several response shapes into one news item type.</p></div>
+    <div class="card"><h3>embeds.py</h3><p>Builds the embed with safe truncation and Discord limit handling.</p></div>
+    <div class="card"><h3>config_manager.py</h3><p>Persistent, non-secret settings in JSON; secrets stay in <code>.env</code>.</p></div>
+  </div>
+</div></section>
+
+<section id="run"><div class="wrap">
+  <h2>Run your own</h2><p class="sub">You need Python 3.10+, a Discord bot token and a FortniteAPI.io key.</p>
+  <ol class="steps">
+    <li><b>Clone and set up</b><pre>git clone https://github.com/248Tech/fortnite-updates-bot.git
+cd fortnite-updates-bot
+./setup.sh --run        # Windows: .\setup.ps1 -Run</pre></li>
+    <li><b>Add your secrets</b> to <code>.env</code>:<pre>DISCORD_TOKEN=your_discord_bot_token
+FORTNITE_API_KEY=your_fortniteapi_io_key
+NEWS_LANGUAGE=en</pre></li>
+    <li><b>Invite the bot</b> to your server and run <code>/fortnite_updates</code>.</li>
+  </ol>
+  <p class="note" style="margin-top:20px">Unofficial fan tool. Not affiliated with or endorsed by Epic Games or Discord. Fortnite is a trademark of Epic Games, Inc.</p>
+</div></section>
+</main>
+<footer><div class="wrap"><span>© 2026 Joe Wayne / 248Tech LLC · MIT License</span><span><a href="demo/">Live demo</a> · <a href="https://github.com/248Tech/fortnite-updates-bot">Source</a> · <a href="https://github.com/248Tech/fortnite-updates-bot/issues">Issues</a></span></div></footer>
+</body>
+</html>
